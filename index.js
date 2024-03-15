@@ -19,6 +19,7 @@ app.use('/genero',require('./routers/genero'));
 app.use('/directores',require('./routers/directores'));
 app.use('/productoras',require('./routers/productora'));
 app.use('/tipos',require('./routers/tipos'));
+app.use('/media',require('./routers/media'));
 
 app.listen(port,() => {
     console.log(`example ${port}`)

@@ -21,7 +21,7 @@ const MediaSchema = Schema({
     },
 
     imagen: {
-        type: Boolean,
+        type: String,
         default: true,
         required: true
     },
