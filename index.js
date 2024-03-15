@@ -1,6 +1,8 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const {getConnection} = require('./dbs/db-connect-mongo');
 const cors = require('cors');
+const { body } = require('express-validator/src/middlewares/validation-chain-builders');
 require('dotenv').config();
 
 const app = express()
