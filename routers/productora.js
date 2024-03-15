@@ -116,7 +116,7 @@ router.put('/:_id', [
         productoras.slogan = req.body.slogan;
         productoras.descripcion = req.body.descripcion;
 
-        productoras = await Productora.save();
+        productoras = await productoras.save();
         res.send(productoras);
         console.log(productoras);
 
