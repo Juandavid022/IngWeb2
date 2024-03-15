@@ -57,7 +57,21 @@ router.post('/', [
 //Get
 router.get('/', async function (req, res) { 
 try {
-    const medias = await Media.find();
+    const medias = await Media.find().populate([
+        {
+            path:'generoPrincipal',select:'nombre'
+        },
+        {
+            path:'directorPrincipal',select:'nombre'
+        },
+        {
+            path:'productora',select:'nombre'
+        },
+        {
+            path:'tipo',select:'nombre'
+        }
+    ]);
+    
     res.send(medias);
     
 } catch (error) {

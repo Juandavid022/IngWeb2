@@ -16,8 +16,7 @@ const MediaSchema = Schema({
     },
     urlPelicula: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
 
     imagen: {
@@ -35,8 +34,7 @@ const MediaSchema = Schema({
     },
     anioEstreno: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     generoPrincipal: {
         type: Schema.Types.ObjectId,
