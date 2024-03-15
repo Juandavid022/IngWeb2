@@ -18,6 +18,7 @@ app.use(express.json());
 app.use('/genero',require('./routers/genero'));
 app.use('/directores',require('./routers/directores'));
 app.use('/productoras',require('./routers/productora'));
+app.use('/tipos',require('./routers/tipos'));
 
 app.listen(port,() => {
     console.log(`example ${port}`)
