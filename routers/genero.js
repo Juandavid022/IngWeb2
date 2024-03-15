@@ -23,13 +23,12 @@ router.post('/', [
             return res.status(400).json({msg: errors.array() });
         }
 
-        const { nombre } = req.query
-        const existeGenero = await Genero.find({ nombre }); 
-        if (existeGenero){
+        const existeGeneros = await Genero.findOne({nombre: req.body.nombre.toUpperCase() }); 
+        if (existeGeneros){
             return res
                 .status(400)
                 .json({ message: "El Genero ya ha sido registrado" });
-        }    
+        }     
         
         let genero = new Genero();
         genero.nombre = req.body.nombre.toUpperCase();
@@ -64,20 +63,20 @@ try {
 
 
 // DELETE
-    router.delete("/:id", async (req, res) => {
+    router.delete("/:_id", async (req, res) => {
  
     try {
         //const {id} = req.params;
         
-        const { id } = req.query
-        const existeGenero = await Genero.findOneAndDelete({ id });
+        const { _id } = req.params;
+        await Genero.deleteOne({ _id: _id })
         //const query = { _id: ObjectId(id) };
         res.send({ message: 'Deleted' });
 
         
     } catch (error) {
         console.log(error)
-        res.status(500).send('Ocurrio un error')
+        res.status(500).send({ message: 'Ocurrio un error' })
     }
 
 });
@@ -85,7 +84,7 @@ try {
 
 
 // PUT
-router.put('/:generoid', [
+router.put('/:_generoid', [
     check('nombre','invalid.nombre').not().isEmpty(),
     check('estado','invalid.estado').isIn(['Activo','Inactivo']),
     
@@ -100,7 +99,7 @@ router.put('/:generoid', [
         }
 
 
-        let genero = await Genero.findById(req.params.generoid);
+        let genero = await Genero.findById(req.params._generoid);
         if(!genero){
             return res.status(400).send('no existe');
         }
