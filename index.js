@@ -16,6 +16,7 @@ getConnection();
 app.use(express.json());
 
 app.use('/genero',require('./routers/genero'));
+app.use('/directores',require('./routers/directores'));
 
 app.listen(port,() => {
     console.log(`example ${port}`)
