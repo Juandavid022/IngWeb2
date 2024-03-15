@@ -66,11 +66,8 @@ try {
     router.delete("/:_id", async (req, res) => {
  
     try {
-        //const {id} = req.params;
-        
         const { _id } = req.params;
         await Genero.deleteOne({ _id: _id })
-        //const query = { _id: ObjectId(id) };
         res.send({ message: 'Deleted' });
 
         
@@ -104,7 +101,6 @@ router.put('/:_generoid', [
             return res.status(400).send('no existe');
         }
 
-        //const { nombre,estado,descripcion, _id} = req.query
         const existeGenero = await Genero.findOne({ nombre:req.body.nombre,_id: {$ne:genero._id} }); 
         if (existeGenero){
             return res

@@ -5,7 +5,6 @@ const Director = require('../models/Directores');
 const {validationResult,check} = require('express-validator');
 const { Db } = require('mongodb');
 const { default: mongoose } = require('mongoose');
-const Directores = require('../models/Directores');
 
 const router = Router();
 
